@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QN_PlayVideoVC">
+            <connections>
+                <outlet property="fillURL" destination="u0w-HI-Mtl" id="gg9-Vj-Ncu"/>
+                <outlet property="playBtn" destination="aTS-U8-6kF" id="M4d-kT-KcR"/>
+                <outlet property="previewBtn" destination="ugY-nC-gXg" id="kMr-Yc-qq0"/>
+                <outlet property="uploadImage" destination="oUg-PK-Vfz" id="xig-7G-QsH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eI-fo-gon">
+                    <rect key="frame" x="0.0" y="73" width="58" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="ZoT-1i-iHZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ZoT-1i-iHZ"/>
+                        </mask>
+                    </variation>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://7xng1t.com1.z0.glb.clouddn.com/wenjli" borderStyle="roundedRect" placeholder="请输入需要播放的视频网络地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u0w-HI-Mtl">
+                    <rect key="frame" x="63" y="70" width="537" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="5wj-UY-h7y"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugY-nC-gXg">
+                    <rect key="frame" x="0.0" y="117" width="600" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="xSh-Wq-EF4"/>
+                    </constraints>
+                    <state key="normal" title="预览">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="xSh-Wq-EF4"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="previewAction:" destination="-1" eventType="touchUpInside" id="l3h-po-ppg"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oUg-PK-Vfz">
+                    <rect key="frame" x="0.0" y="167" width="600" height="433"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTS-U8-6kF">
+                    <rect key="frame" x="268" y="352" width="64" height="64"/>
+                    <state key="normal" image="playLogo.png"/>
+                    <connections>
+                        <action selector="playAction:" destination="-1" eventType="touchUpInside" id="rJL-LB-HfA"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="u0w-HI-Mtl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="04a-Xf-dFe"/>
+                <constraint firstItem="0eI-fo-gon" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0cQ-K3-e42"/>
+                <constraint firstItem="ugY-nC-gXg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0n6-VQ-21p"/>
+                <constraint firstAttribute="trailing" secondItem="oUg-PK-Vfz" secondAttribute="trailing" id="1nf-C5-PEJ"/>
+                <constraint firstItem="u0w-HI-Mtl" firstAttribute="leading" secondItem="0eI-fo-gon" secondAttribute="trailing" constant="5" id="AB8-cz-jOL"/>
+                <constraint firstAttribute="trailing" secondItem="ugY-nC-gXg" secondAttribute="trailing" id="Odr-vm-AwS"/>
+                <constraint firstAttribute="trailing" secondItem="u0w-HI-Mtl" secondAttribute="trailing" id="RzM-iP-W0a"/>
+                <constraint firstItem="ugY-nC-gXg" firstAttribute="top" secondItem="0eI-fo-gon" secondAttribute="bottom" constant="20" id="TjT-78-tOW"/>
+                <constraint firstItem="0eI-fo-gon" firstAttribute="centerY" secondItem="u0w-HI-Mtl" secondAttribute="centerY" id="VO0-jz-tyU"/>
+                <constraint firstItem="aTS-U8-6kF" firstAttribute="centerY" secondItem="oUg-PK-Vfz" secondAttribute="centerY" id="YM0-rs-BKO"/>
+                <constraint firstAttribute="bottom" secondItem="oUg-PK-Vfz" secondAttribute="bottom" id="cZa-DS-40d"/>
+                <constraint firstItem="aTS-U8-6kF" firstAttribute="centerX" secondItem="oUg-PK-Vfz" secondAttribute="centerX" id="fQz-Fp-0xP"/>
+                <constraint firstItem="oUg-PK-Vfz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jOg-ue-1pz"/>
+                <constraint firstItem="oUg-PK-Vfz" firstAttribute="top" secondItem="ugY-nC-gXg" secondAttribute="bottom" constant="20" id="w6w-ax-3i5"/>
+            </constraints>
+            <point key="canvasLocation" x="332" y="226"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="playLogo.png" width="64" height="64"/>
+    </resources>
+</document>
