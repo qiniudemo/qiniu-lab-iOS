@@ -1,0 +1,179 @@
+//
+//  QN_uploadWithSameKeyVC.m
+//  QNAaronTest
+//
+//  Created by   何舒 on 15/10/18.
+//  Copyright © 2015年   何舒. All rights reserved.
+//
+
+#import "QN_uploadWithSameKeyVC.h"
+
+@interface QN_uploadWithSameKeyVC ()
+
+@property (nonatomic, strong) UIImage * pickImage;
+
+@end
+
+@implementation QN_uploadWithSameKeyVC
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    self.uploadImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.showLabel.hidden = YES;
+    
+    self.prograssView.hidden = YES;
+    self.prograssView.progress = 0.0f;
+    
+}
+
+-(void)getTokenFromQN
+{
+    NSString * urlString = [NSString stringWithFormat:@"~aaron/qiniu-api-server/php-v6/api/simple_upload/overwrite_existing_file_upload_token.php?key=%@",self.fillKey.text];
+    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:urlString andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
+        self.token = responseObject[@"uptoken"];
+        [self uploadImageToQNFilePath:[self getImagePath:self.pickImage]];
+    } andFailure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error ======  %@", error);
+    } andISstatus:nil];
+}
+- (IBAction)choseAction:(id)sender {
+    [self gotoImageLibrary];
+}
+
+- (IBAction)uploadAction:(id)sender {
+    
+    self.showLabel.hidden = NO;
+    self.prograssView.hidden = NO;
+    [self getTokenFromQN];
+    
+    
+}
+
+/**
+ *  调用系统相册
+ */
+-(void)gotoImageLibrary
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:picker animated:YES completion:nil];
+    }else {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"访问图片库错误"
+                              message:@""
+                              delegate:nil
+                              cancelButtonTitle:@"OK!"
+                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+//再调用以下委托：
+#pragma mark UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker
+        didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+{
+    self.pickImage = image; //imageView为自己定义的UIImageView
+    [picker dismissModalViewControllerAnimated:YES];
+    
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+//照片获取本地路径转换
+-(NSString *)getImagePath:(UIImage *)Image
+{
+    NSString * filePath = nil;
+    NSData * data = nil;
+    if (UIImagePNGRepresentation(Image) == nil)
+    {
+        data = UIImageJPEGRepresentation(Image, 1.0);
+    }
+    else
+    {
+        data = UIImagePNGRepresentation(Image);
+    }
+    
+    //图片保存的路径
+    //这里将图片放在沙盒的documents文件夹中
+    NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    //文件管理器
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //把刚刚图片转换的data对象拷贝至沙盒中
+    [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
+    NSString * ImagePath = [[NSString alloc]initWithFormat:@"/theFirstImage.png"];
+    [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:ImagePath] contents:data attributes:nil];
+    
+    //得到选择后沙盒中图片的完整路径
+    filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,ImagePath];
+    return filePath;
+}
+
+-(void)uploadImageToQNFilePath:(NSString *)filePath
+{
+    NSString * token = @"";
+    if (!isStringEmpty(self.token)) {
+        token = self.token;
+    }
+    QNUploadManager *upManager = [[QNUploadManager alloc] init];
+    QNUploadOption * uploadOption = [[QNUploadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
+        self.percentFloat = percent;
+    } params:nil checkCrc:NO cancellationSignal:nil];
+    [upManager putFile:filePath key: self.fillKey.text token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        NSLog(@"info ===== %@", info);
+        NSLog(@"resp ===== %@", resp);
+        NSLog(@"%@/%@",QN_URL,resp[@"key"]);
+        [self.uploadImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",QN_URL,resp[@"key"]]] placeholderImage:[UIImage imageNamed:@"placeholder.jpg"]];
+    } option:uploadOption];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(getPercent) userInfo:nil repeats:YES];
+    
+}
+
+- (void)getPercent
+{
+    if (self.percentFloat == 1.00) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    self.showLabel.text = [NSString stringWithFormat:@"%.0f%%",self.percentFloat*100];
+    self.prograssView.progress = self.percentFloat;
+    [self.showLabel setNeedsLayout];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+
+{
+    
+    [self.fillKey resignFirstResponder];    //主要是[receiver resignFirstResponder]在哪调用就能把receiver对应的键盘往下收
+    
+    return YES;
+    
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
