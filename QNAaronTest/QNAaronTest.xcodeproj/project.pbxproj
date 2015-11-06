@@ -831,7 +831,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiniu.QNTestDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d32c76ad-6e5e-4e47-811f-c0a4b4d0c4e1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -866,7 +866,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiniu.QNTestDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d32c76ad-6e5e-4e47-811f-c0a4b4d0c4e1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
