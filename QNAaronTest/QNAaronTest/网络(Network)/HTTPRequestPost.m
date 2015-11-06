@@ -19,8 +19,8 @@
     self=[super init];
     if(self)
     {
-        self.AFAppDotNetClient=[[AFAppDotNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString:URL_HFB]];
-        DebugLog(@"%@",URL_HFB);
+        self.AFAppDotNetClient=[[AFAppDotNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString:URL_QN]];
+        DebugLog(@"%@",URL_QN);
     }
     return self;
 }
