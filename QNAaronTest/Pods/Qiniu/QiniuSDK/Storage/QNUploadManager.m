@@ -12,14 +12,17 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <UIKit/UIKit.h>
 #import "QNALAssetFile.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 #import "QNPHAssetFile.h"
 #import <Photos/Photos.h>
 #endif
-#import <AssetsLibrary/AssetsLibrary.h>
+
 #else
 #import <CoreServices/CoreServices.h>
 #endif
+
 
 #import "QNConfiguration.h"
 #import "QNHttpManager.h"
@@ -33,6 +36,7 @@
 #import "QNAsyncRun.h"
 #import "QNUpToken.h"
 #import "QNFile.h"
+#import "QNSystem.h"
 
 @interface QNUploadManager ()
 @property (nonatomic) id <QNHttpDelegate> httpManager;
@@ -66,24 +70,11 @@
 		}
 		_config = config;
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
-		BOOL lowVersion = NO;
-	#if defined(__IPHONE_OS_VERSION_MAX_ALLOWED)
-		float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
-		if (sysVersion < 7.0) {
-			lowVersion = YES;
-		}
-	#else
-		NSOperatingSystemVersion sysVersion = [[NSProcessInfo processInfo] operatingSystemVersion];
-
-		if ((sysVersion.majorVersion = 10 && sysVersion.minorVersion < 9)) {
-			lowVersion = YES;
-		}
-	#endif
-		if (lowVersion) {
-			_httpManager = [[QNHttpManager alloc] initWithTimeout:config.timeoutInterval urlConverter:config.converter dns:config.dns];
+		if (hasNSURLSession()) {
+			_httpManager = [[QNSessionManager alloc] initWithProxy:config.proxy timeout:config.timeoutInterval urlConverter:config.converter upStatsDropRate:-1 dns:config.dns];
 		}
 		else {
-			_httpManager = [[QNSessionManager alloc] initWithProxy:config.proxy timeout:config.timeoutInterval urlConverter:config.converter dns:config.dns];
+			_httpManager = [[QNHttpManager alloc] initWithTimeout:config.timeoutInterval urlConverter:config.converter upStatsDropRate:config.upStatsDropRate dns:config.dns];
 		}
 #else
 		_httpManager = [[QNHttpManager alloc] initWithTimeout:config.timeoutInterval urlConverter:config.converter dns:config.dns];
@@ -145,6 +136,12 @@
 		return;
 	}
 
+	if ([data length] == 0) {
+		QNAsyncRunInMain( ^{
+			completionHandler([QNResponseInfo responseInfoOfZeroData:nil], key, nil);
+		});
+		return;
+	}
 	QNUpCompletionHandler complete = ^(QNResponseInfo *info, NSString *key, NSDictionary *resp)
 	{
 		QNAsyncRunInMain( ^{
@@ -271,21 +268,22 @@
            complete:(QNUpCompletionHandler)completionHandler
              option:(QNUploadOption *)option {
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000)
-    if ([QNUploadManager checkAndNotifyError:key token:token input:asset complete:completionHandler]) {
-        return;
-    }
-    @autoreleasepool {
-        NSError *error = nil;
-        __block QNPHAssetFile *file = [[QNPHAssetFile alloc] init:asset error:&error];
-        if (error) {
-            QNAsyncRunInMain( ^{
-                QNResponseInfo *info = [QNResponseInfo responseInfoWithFileError:error];
-                completionHandler(info, key, nil);
-            });
-            return;
-        }
-        [self putFileInternal:file key:key token:token complete:completionHandler option:option];
-    }
+	if ([QNUploadManager checkAndNotifyError:key token:token input:asset complete:completionHandler]) {
+		return;
+	}
+
+	@autoreleasepool {
+		NSError *error = nil;
+		__block QNPHAssetFile *file = [[QNPHAssetFile alloc] init:asset error:&error];
+		if (error) {
+			QNAsyncRunInMain( ^{
+				QNResponseInfo *info = [QNResponseInfo responseInfoWithFileError:error];
+				completionHandler(info, key, nil);
+			});
+			return;
+		}
+		[self putFileInternal:file key:key token:token complete:completionHandler option:option];
+	}
 #endif
 }
 

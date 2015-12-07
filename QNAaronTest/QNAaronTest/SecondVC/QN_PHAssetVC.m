@@ -13,8 +13,8 @@
 #import "QN_PHAssetChoseVC.h"
 
 
-#define IMAGEUPLOAD @"~aaron/qiniu-api-server/php-v6/api/quick_start/simple_image_example_token.php"
-#define VIDEOUPLOAD @"~aaron/qiniu-api-server/php-v6/api/resumable_upload/with_key_upload_token.php"
+#define IMAGEUPLOAD @"api/quick_start/simple_image_example_token.php"
+#define VIDEOUPLOAD @"api/resumable_upload/with_key_upload_token.php"
 @interface QN_PHAssetVC ()
 
 @property (nonatomic ,strong) PHAsset * phAsset;
@@ -98,7 +98,7 @@
         NSLog(@"info ===== %@", info);
         NSLog(@"resp ===== %@", resp);
         
-        NSLog(@"%@/%@",QN_URL,resp[@"key"]);
+        NSLog(@"%@/%@",self.domain,resp[@"key"]);
         [self.uploadImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",self.domain,resp[@"key"]]] placeholderImage:[UIImage imageNamed:@"placeholder.jpg"]];
         
     } option:uploadOption];

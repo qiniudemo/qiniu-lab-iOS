@@ -38,7 +38,7 @@
 
 -(void)getTokenFromQN
 {
-    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"~aaron/qiniu-api-server/php-v6/api/resumable_upload/with_key_upload_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
+    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"api/resumable_upload/with_key_upload_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
         self.token = responseObject[@"uptoken"];
         self.domain = responseObject [@"domain"];
     } andFailure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -114,7 +114,7 @@
     [upManager putALAsset:self.asset key:@"video0" token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
         NSLog(@"info ==== %@",info);
         NSLog(@"resp ==== %@",resp);
-        NSLog(@"%@/%@",QN_URL,key);
+        NSLog(@"%@/%@",self.domain,key);
     } option:uploadOption];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(getPercent) userInfo:nil repeats:YES];
     

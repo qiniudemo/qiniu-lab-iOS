@@ -33,7 +33,7 @@
 
 -(void)getTokenFromQN
 {
-    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"~aaron/qiniu-api-server/php-v6/api/resumable_upload/without_key_upload_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
+    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"api/resumable_upload/without_key_upload_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
         self.token = responseObject[@"uptoken"];
 //        [self getImagePath:self.pickImage];
         [self uploadImageToQNFilePath];
@@ -170,8 +170,8 @@
     [self.upManager putFile:pathfile key:self.fillKey.text token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
         NSLog(@"info ===== %@", info);
         NSLog(@"resp ===== %@", resp);
-        NSLog(@"%@/%@",QN_URL,key);
-        [self.uploadImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",QN_URL,key]] placeholderImage:[UIImage imageNamed:@"placeholder.jpg"]];
+        NSLog(@"%@/%@",FILE_URL,key);
+        [self.uploadImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",FILE_URL,key]] placeholderImage:[UIImage imageNamed:@"placeholder.jpg"]];
     } option:uploadOption];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(getPercent) userInfo:nil repeats:YES];
     

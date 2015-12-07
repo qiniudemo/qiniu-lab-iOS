@@ -10,11 +10,14 @@
 
 #import "QNRecorderDelegate.h"
 
+
 @class QNResponseInfo;
 @class QNUploadOption;
 @class QNConfiguration;
 @class ALAsset;
 @class PHAsset;
+
+
 /**
  *    上传完成后的回调函数
  *
@@ -129,7 +132,6 @@ typedef void (^QNUpCompletionHandler)(QNResponseInfo *info, NSString *key, NSDic
  *    @param completionHandler 上传完成后的回调函数
  *    @param option            上传时传入的可选参数
  */
-
 - (void) putPHAsset:(PHAsset *)asset
                 key:(NSString *)key
               token:(NSString *)token
