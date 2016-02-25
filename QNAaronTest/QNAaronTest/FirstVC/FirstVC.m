@@ -7,6 +7,7 @@
 //
 
 #import "FirstVC.h"
+#import "QNEtag.h"
 
 @interface FirstVC ()
 
@@ -26,6 +27,7 @@
     self.tableViewNum = 0;
 
 }
+
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

@@ -29,7 +29,7 @@
 
 -(void)getTokenFromQN
 {
-    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"~aaron/qiniu-api-server/php-v6/api/simple_upload/use_return_body_upload_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
+    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"api/simple_upload/use_return_body_upload_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
         self.token = responseObject[@"uptoken"];
         [self uploadImageToQNFilePath:[self getImagePath:self.pickImage]];
     } andFailure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -42,10 +42,14 @@
 
 - (IBAction)uploadAction:(id)sender {
     
+    if (self.fillKey.text) {
     self.showLabel.hidden = NO;
     self.prograssView.hidden = NO;
     [self getTokenFromQN];
-    
+    }else
+    {
+        [SVProgressHUD showAlterMessage:@"请输入key"];
+    }
     
 }
 
@@ -135,8 +139,8 @@
     [upManager putFile:filePath key: self.fillKey.text token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
         NSLog(@"info ===== %@", info);
         NSLog(@"resp ===== %@", resp);
-        NSLog(@"%@/%@",QN_URL,resp[@"key"]);
-        [self.uploadImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",QN_URL,resp[@"key"]]] placeholderImage:[UIImage imageNamed:@"placeholder.jpg"]];
+        NSLog(@"%@/%@",FILE_URL,resp[@"key"]);
+        [self.uploadImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",FILE_URL,resp[@"key"]]] placeholderImage:[UIImage imageNamed:@"placeholder.jpg"]];
     } option:uploadOption];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(getPercent) userInfo:nil repeats:YES];
     

@@ -27,7 +27,7 @@ pod "Qiniu", "~> 7.0"
 ```Objective-C
 #import <QiniuSDK.h>
 ...
-    NSString token = @"从服务端SDK获取";
+    NSString *token = @"从服务端SDK获取";
     QNUploadManager *upManager = [[QNUploadManager alloc] init];
     NSData *data = [@"Hello, World!" dataUsingEncoding : NSUTF8StringEncoding];
     [upManager putData:data key:@"hello" token:token
@@ -58,12 +58,14 @@ $ xctool -workspace QiniuSDK.xcworkspace -scheme "QiniuSDK Mac" -sdk macosx -con
 ## 常见问题
 
 - 如果碰到 crc 链接错误, 请把 libz.dylib 加入到项目中去
+- 如果碰到 res_9_ninit 链接错误, 请把 libresolv.dylib 加入到项目中去
 - 如果需要支持 iOS 5 或者支持 RestKit, 请用 AFNetworking 1.x 分支的版本
 - 如果碰到其他编译错误, 请参考 CocoaPods 的 [troubleshooting](http://guides.cocoapods.org/using/troubleshooting.html)
+- iOS 9+ 强制使用https，需要在project build info 添加NSAppTransportSecurity类型Dictionary。在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES。 具体操作可参见 http://blog.csdn.net/guoer9973/article/details/48622823
 
 ## 代码贡献
 
-详情参考 [代码提交指南](https://github.com/qiniu/objc-sdk/blob/master/CONTRIBUTING.md).
+详情参考 [代码提交指南](https://github.com/qiniu/objc-sdk/blob/master/Contributing.md).
 
 ## 贡献记录
 

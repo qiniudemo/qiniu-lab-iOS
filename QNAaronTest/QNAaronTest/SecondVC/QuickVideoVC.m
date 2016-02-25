@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSTimer * timer;
 @property (nonatomic, strong) ALAsset * asset;
 @property (nonatomic, strong) ALAssetsLibrary * assetslibrary;
+@property (nonatomic, strong) NSData * imageData;
 
 @end
 
@@ -38,9 +39,10 @@
 
 -(void)getTokenFromQN
 {
-    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"~aaron/qiniu-api-server/php-v6/api/resumable_upload/with_key_upload_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
+    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"api/quick_start/simple_image_example_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
         self.token = responseObject[@"uptoken"];
         self.domain = responseObject [@"domain"];
+        [self uploadImageToQNFilePath:nil];
     } andFailure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"error ======  %@", error);
     } andISstatus:nil];
@@ -68,7 +70,7 @@
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+//        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
         [self presentViewController:picker animated:YES completion:nil];
     }else {
         UIAlertView *alert = [[UIAlertView alloc]
@@ -83,14 +85,17 @@
 
 //再调用以下委托：
 #pragma mark UIImagePickerControllerDelegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+- (void)imagePickerController:(UIImagePickerController *)picker
+        didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
-    NSURL * videoURL = [info valueForKey:UIImagePickerControllerReferenceURL];
-    ALAssetsLibraryAssetForURLResultBlock resultBlock = ^(ALAsset * asset)
+    if (UIImagePNGRepresentation(image) == nil)
     {
-        self.asset = asset;
-    };
-    [self.assetslibrary assetForURL:videoURL resultBlock:resultBlock failureBlock:nil];
+        self.imageData = UIImageJPEGRepresentation(image, 1.0);
+    }
+    else
+    {
+        self.imageData = UIImagePNGRepresentation(image);
+    }
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -111,10 +116,10 @@
     QNUploadOption * uploadOption = [[QNUploadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
         self.percentFloat = percent;
     } params:nil checkCrc:NO cancellationSignal:nil];
-    [upManager putALAsset:self.asset key:@"video0" token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+    [upManager putData:self.imageData key:@"video33636" token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
         NSLog(@"info ==== %@",info);
         NSLog(@"resp ==== %@",resp);
-        NSLog(@"%@/%@",QN_URL,key);
+        NSLog(@"%@/%@",self.domain,key);
     } option:uploadOption];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(getPercent) userInfo:nil repeats:YES];
     

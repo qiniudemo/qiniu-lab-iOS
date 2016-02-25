@@ -31,7 +31,7 @@ typedef BOOL (^QNUpCancellationSignal)(void);
 /**
  *    用于服务器上传回调通知的自定义参数，参数的key必须以x: 开头
  */
-@property (copy, nonatomic, readonly) NSDictionary * params;
+@property (copy, nonatomic, readonly) NSDictionary *params;
 
 /**
  *    指定文件的mime类型
@@ -70,7 +70,8 @@ typedef BOOL (^QNUpCancellationSignal)(void);
                     checkCrc:(BOOL)check
           cancellationSignal:(QNUpCancellationSignal)cancellation;
 
-- (instancetype)initWithProgessHandler:(QNUpProgressHandler)progress;
+- (instancetype)initWithProgessHandler:(QNUpProgressHandler)progress DEPRECATED_ATTRIBUTE;
+- (instancetype)initWithProgressHandler:(QNUpProgressHandler)progress;
 
 /**
  *    内部使用，默认的参数实例

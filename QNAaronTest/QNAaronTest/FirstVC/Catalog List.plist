@@ -11,7 +11,7 @@
 				<key>functionName</key>
 				<string>文件上传</string>
 				<key>functionVCName</key>
-				<string>QN_UploadFileWithoutKey</string>
+				<string>QuickVideoVC</string>
 			</dict>
 			<dict>
 				<key>functionName</key>
@@ -24,6 +24,12 @@
 				<string>资源上传(PHAsset)iOS8之后支持，之前崩溃</string>
 				<key>functionVCName</key>
 				<string>QN_PHAssetVC</string>
+			</dict>
+			<dict>
+				<key>functionName</key>
+				<string>livephoto上传iOS9.1之后，之前崩溃</string>
+				<key>functionVCName</key>
+				<string>QN_LivePhotoVC</string>
 			</dict>
 		</array>
 	</dict>

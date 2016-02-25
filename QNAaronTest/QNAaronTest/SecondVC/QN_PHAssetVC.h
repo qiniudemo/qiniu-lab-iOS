@@ -8,7 +8,7 @@
 
 #import "BaseVC.h"
 
-@interface QN_PHAssetVC : BaseVC<UITextFieldDelegate>
+@interface QN_PHAssetVC : BaseVC<UITextFieldDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *choseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *uploadBtn;

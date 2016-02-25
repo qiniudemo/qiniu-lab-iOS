@@ -7,11 +7,13 @@
 //
 
 #import "uploadAlassetImage.h"
+#import <Photos/Photos.h>
 
 @interface uploadAlassetImage ()
 
 @property (nonatomic, strong) ALAsset * asset;
 @property (nonatomic, strong) ALAssetsLibrary * assetslibrary;
+
 
 @end
 
@@ -48,7 +50,7 @@
 
 -(void)getTokenFromQN
 {
-    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"~aaron/qiniu-api-server/php-v6/api/quick_start/simple_image_example_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
+    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"api/quick_start/simple_image_example_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
         self.token = responseObject[@"uptoken"];
         self.domain = responseObject[@"domain"];
         [self uploadImageAssetToQN];
@@ -117,7 +119,7 @@
         NSLog(@"info ===== %@", info);
         NSLog(@"resp ===== %@", resp);
         
-        NSLog(@"%@/%@",QN_URL,resp[@"key"]);
+        NSLog(@"%@/%@",self.domain,resp[@"key"]);
         [self.uploadImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",self.domain,resp[@"key"]]] placeholderImage:[UIImage imageNamed:@"placeholder.jpg"]];
         
     } option:uploadOption];

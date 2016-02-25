@@ -51,7 +51,7 @@
 
 -(void)getTokenFromQN
 {
-    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"~aaron/qiniu-api-server/php-v6/api/quick_start/simple_video_example_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
+    [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"api/quick_start/simple_video_example_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
         self.token = responseObject[@"uptoken"];
         self.domain = responseObject[@"domain"];
         [self uploadImageAssetToQN];
@@ -119,7 +119,7 @@
         NSLog(@"info ===== %@", info);
         NSLog(@"resp ===== %@", resp);
         
-        NSLog(@"%@/%@",QN_URL,key);
+        NSLog(@"%@/%@",self.domain,key);
         
     } option:uploadOption];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(getPercent) userInfo:nil repeats:YES];

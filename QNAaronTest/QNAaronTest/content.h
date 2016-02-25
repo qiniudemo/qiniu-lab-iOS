@@ -18,13 +18,16 @@
  */
 #define SELECT_IP  0
 #if SELECT_IP == 0
-#define URL_QN @"http://192.168.200.186"
+#define URL_QN @"http://115.231.183.102:9090"
+
 #endif
 
 /**
- *  定义服务器URL
+ *  定义环境参数
  */
-#define QN_URL @"http://7xng1t.com1.z0.glb.clouddn.com"
+
+#define FILE_URL @"http://7pn64c.com1.z0.glb.clouddn.com"
+
 
 //获取当前屏幕宽高
 #define kDeviceWidth [UIScreen mainScreen].bounds.size.width        //屏幕宽
