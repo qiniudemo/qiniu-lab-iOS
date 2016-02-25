@@ -10,8 +10,6 @@
 
 #import <Photos/Photos.h>
 
-#import "QN_PHAssetChoseVC.h"
-
 
 #define IMAGEUPLOAD @"api/quick_start/simple_image_example_token.php"
 #define VIDEOUPLOAD @"api/resumable_upload/with_key_upload_token.php"

@@ -58,10 +58,6 @@
 		93CE810A1BD5F489008AB56F /* QN_PlayLocalVideoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CE81081BD5F489008AB56F /* QN_PlayLocalVideoVC.xib */; };
 		93CED2CE1C7EAAC400839427 /* QN_LivePhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CED2CC1C7EAAC400839427 /* QN_LivePhotoVC.m */; };
 		93CED2CF1C7EAAC400839427 /* QN_LivePhotoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CED2CD1C7EAAC400839427 /* QN_LivePhotoVC.xib */; };
-		93CEF4661BDDEF6A00750FE8 /* QN_PHAssetChoseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CEF45B1BDDEF6A00750FE8 /* QN_PHAssetChoseVC.m */; };
-		93CEF4671BDDEF6A00750FE8 /* QN_PHAssetChoseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CEF45C1BDDEF6A00750FE8 /* QN_PHAssetChoseVC.xib */; };
-		93CEF4681BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CEF45E1BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.m */; };
-		93CEF4691BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CEF45F1BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.xib */; };
 		93CEF46C1BDDEF6A00750FE8 /* QN_PHAssetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CEF4641BDDEF6A00750FE8 /* QN_PHAssetVC.m */; };
 		93CEF46D1BDDEF6A00750FE8 /* QN_PHAssetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CEF4651BDDEF6A00750FE8 /* QN_PHAssetVC.xib */; };
 		93CF705A1BCCD46300ED2DAA /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CF70561BCCD46300ED2DAA /* BaseVC.m */; };
@@ -174,12 +170,6 @@
 		93CED2CB1C7EAAC400839427 /* QN_LivePhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QN_LivePhotoVC.h; path = QNAaronTest/SecondVC/QN_LivePhotoVC.h; sourceTree = SOURCE_ROOT; };
 		93CED2CC1C7EAAC400839427 /* QN_LivePhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QN_LivePhotoVC.m; path = QNAaronTest/SecondVC/QN_LivePhotoVC.m; sourceTree = SOURCE_ROOT; };
 		93CED2CD1C7EAAC400839427 /* QN_LivePhotoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QN_LivePhotoVC.xib; path = QNAaronTest/SecondVC/QN_LivePhotoVC.xib; sourceTree = SOURCE_ROOT; };
-		93CEF45A1BDDEF6A00750FE8 /* QN_PHAssetChoseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QN_PHAssetChoseVC.h; path = QNAaronTest/SecondVC/QN_PHAssetChoseVC.h; sourceTree = SOURCE_ROOT; };
-		93CEF45B1BDDEF6A00750FE8 /* QN_PHAssetChoseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QN_PHAssetChoseVC.m; path = QNAaronTest/SecondVC/QN_PHAssetChoseVC.m; sourceTree = SOURCE_ROOT; };
-		93CEF45C1BDDEF6A00750FE8 /* QN_PHAssetChoseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QN_PHAssetChoseVC.xib; path = QNAaronTest/SecondVC/QN_PHAssetChoseVC.xib; sourceTree = SOURCE_ROOT; };
-		93CEF45D1BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QN_PHAssetCollectionViewCell.h; path = QNAaronTest/SecondVC/QN_PHAssetCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		93CEF45E1BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QN_PHAssetCollectionViewCell.m; path = QNAaronTest/SecondVC/QN_PHAssetCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		93CEF45F1BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QN_PHAssetCollectionViewCell.xib; path = QNAaronTest/SecondVC/QN_PHAssetCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		93CEF4631BDDEF6A00750FE8 /* QN_PHAssetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QN_PHAssetVC.h; path = QNAaronTest/SecondVC/QN_PHAssetVC.h; sourceTree = SOURCE_ROOT; };
 		93CEF4641BDDEF6A00750FE8 /* QN_PHAssetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QN_PHAssetVC.m; path = QNAaronTest/SecondVC/QN_PHAssetVC.m; sourceTree = SOURCE_ROOT; };
 		93CEF4651BDDEF6A00750FE8 /* QN_PHAssetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QN_PHAssetVC.xib; path = QNAaronTest/SecondVC/QN_PHAssetVC.xib; sourceTree = SOURCE_ROOT; };
@@ -426,12 +416,6 @@
 				93CE81061BD5F489008AB56F /* QN_PlayLocalVideoVC.h */,
 				93CE81071BD5F489008AB56F /* QN_PlayLocalVideoVC.m */,
 				93CE81081BD5F489008AB56F /* QN_PlayLocalVideoVC.xib */,
-				93CEF45A1BDDEF6A00750FE8 /* QN_PHAssetChoseVC.h */,
-				93CEF45B1BDDEF6A00750FE8 /* QN_PHAssetChoseVC.m */,
-				93CEF45C1BDDEF6A00750FE8 /* QN_PHAssetChoseVC.xib */,
-				93CEF45D1BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.h */,
-				93CEF45E1BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.m */,
-				93CEF45F1BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.xib */,
 				93CEF4631BDDEF6A00750FE8 /* QN_PHAssetVC.h */,
 				93CEF4641BDDEF6A00750FE8 /* QN_PHAssetVC.m */,
 				93CEF4651BDDEF6A00750FE8 /* QN_PHAssetVC.xib */,
@@ -570,7 +554,6 @@
 				935983D21C2BD7010068D879 /* new_07045597bef320de6.mp4 in Resources */,
 				93742FE61BD3BBE400F3DA5F /* QN_uploadWithSameKeyVC.xib in Resources */,
 				932E0B1C1BD08C4C00D680E1 /* BreakPointVC.xib in Resources */,
-				93CEF4671BDDEF6A00750FE8 /* QN_PHAssetChoseVC.xib in Resources */,
 				93CE810A1BD5F489008AB56F /* QN_PlayLocalVideoVC.xib in Resources */,
 				93742FEB1BD3C3BB00F3DA5F /* QN_uploadFileWithMimetype.xib in Resources */,
 				9372E4471BCE2624008FF500 /* uploadAlassetImage.xib in Resources */,
@@ -584,7 +567,6 @@
 				932B07431BD27B77002F576E /* QN_UploadFileWithKey.xib in Resources */,
 				932B073E1BD26A6F002F576E /* QN_UploadFileWithoutKey.xib in Resources */,
 				93D2AD291BD3AA8D00955EE5 /* QN_uploadFileWithParams.xib in Resources */,
-				93CEF4691BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.xib in Resources */,
 				935E848A1BD3DC6A00E7ACD5 /* QN_uploadTakeVideoVC.xib in Resources */,
 				93D4BE9D1C15870300ABDD42 /* icon@2x.png in Resources */,
 				937E26071BC673170028858C /* Assets.xcassets in Resources */,
@@ -676,7 +658,6 @@
 				935E84891BD3DC6A00E7ACD5 /* QN_uploadTakeVideoVC.m in Sources */,
 				932C51471BC7AE1900E097C5 /* SVIndefiniteAnimatedView.m in Sources */,
 				93D2AD281BD3AA8D00955EE5 /* QN_uploadFileWithParams.m in Sources */,
-				93CEF4681BDDEF6A00750FE8 /* QN_PHAssetCollectionViewCell.m in Sources */,
 				93CE81091BD5F489008AB56F /* QN_PlayLocalVideoVC.m in Sources */,
 				93CEF46C1BDDEF6A00750FE8 /* QN_PHAssetVC.m in Sources */,
 				932B073D1BD26A6F002F576E /* QN_UploadFileWithoutKey.m in Sources */,
@@ -685,7 +666,6 @@
 				932B07421BD27B77002F576E /* QN_UploadFileWithKey.m in Sources */,
 				93742FEA1BD3C3BB00F3DA5F /* QN_uploadFileWithMimetype.m in Sources */,
 				93CE80FA1BD4E124008AB56F /* QN_PlayVideoVC.m in Sources */,
-				93CEF4661BDDEF6A00750FE8 /* QN_PHAssetChoseVC.m in Sources */,
 				93259CAB1BCF723700811967 /* QuickVideoVC.m in Sources */,
 				93742FEF1BD3C96900F3DA5F /* QN_uploadTakePhoto.m in Sources */,
 				932C51311BC7AD2C00E097C5 /* AFAppDotNetAPIClient.m in Sources */,
