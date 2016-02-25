@@ -18,6 +18,7 @@
 @interface QN_PHAssetVC ()
 
 @property (nonatomic ,strong) PHAsset * phAsset;
+@property (nonatomic, strong) PHFetchResult * selectPhasset;
 
 @property (nonatomic, assign) BOOL isStop;
 
@@ -43,11 +44,52 @@
 
 - (IBAction)choseAction:(id)sender
 {
-    QN_PHAssetChoseVC * getPHAssetVC = [[QN_PHAssetChoseVC alloc] init];
-    [self.navigationController pushViewController:getPHAssetVC animated:YES];
-    [getPHAssetVC getPHAssetFromPH:^(PHAsset *asset) {
-        self.phAsset = asset;
-    }];
+//    QN_PHAssetChoseVC * getPHAssetVC = [[QN_PHAssetChoseVC alloc] init];
+//    [self.navigationController pushViewController:getPHAssetVC animated:YES];
+//    [getPHAssetVC getPHAssetFromPH:^(PHAsset *asset) {
+//        self.phAsset = asset;
+//    }];
+    [self gotoImageLibrary];
+}
+
+/**
+ *  调用系统相册
+ */
+-(void)gotoImageLibrary
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:picker animated:YES completion:nil];
+    }else {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"访问图片库错误"
+                              message:@""
+                              delegate:nil
+                              cancelButtonTitle:@"OK!"
+                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+//再调用以下委托：
+#pragma mark UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    NSURL * imageURL = [info valueForKey:UIImagePickerControllerReferenceURL];
+    NSArray * array = [[NSArray alloc] initWithObjects:imageURL, nil];
+    self.selectPhasset = [PHAsset fetchAssetsWithALAssetURLs:array options:nil];
+    self.phAsset = self.selectPhasset[0];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (IBAction)uploadBtn:(id)sender

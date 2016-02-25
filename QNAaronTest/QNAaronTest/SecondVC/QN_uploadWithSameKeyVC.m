@@ -44,10 +44,14 @@
 
 - (IBAction)uploadAction:(id)sender {
     
+    if (self.fillKey.text) {
     self.showLabel.hidden = NO;
     self.prograssView.hidden = NO;
     [self getTokenFromQN];
-    
+    }else
+    {
+        [SVProgressHUD showAlterMessage:@"请输入key"];
+    }
     
 }
 

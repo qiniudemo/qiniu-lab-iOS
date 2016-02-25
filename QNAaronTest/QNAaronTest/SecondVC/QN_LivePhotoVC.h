@@ -1,14 +1,14 @@
 //
-//  QN_PHAssetVC.h
+//  QN_LivePhotoVC.h
 //  QNAaronTest
 //
-//  Created by   何舒 on 15/10/22.
-//  Copyright © 2015年   何舒. All rights reserved.
+//  Created by   何舒 on 16/2/25.
+//  Copyright © 2016年   何舒. All rights reserved.
 //
 
 #import "BaseVC.h"
 
-@interface QN_PHAssetVC : BaseVC<UITextFieldDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface QN_LivePhotoVC : BaseVC<UITextFieldDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *choseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *uploadBtn;

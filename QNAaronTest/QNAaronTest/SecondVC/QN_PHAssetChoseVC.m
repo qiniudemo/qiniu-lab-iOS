@@ -23,8 +23,9 @@ static NSString * const CellReuseIdentifier = @"Cell";
     // Do any additional setup after loading the view from its nib.
     
     PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
-    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+//    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
     self.allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
+//    self.allPhotos = [PHAsset fet]
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"QN_PHAssetCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:CellReuseIdentifier];
     

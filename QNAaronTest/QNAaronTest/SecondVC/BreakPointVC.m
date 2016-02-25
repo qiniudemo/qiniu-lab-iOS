@@ -57,11 +57,14 @@
 
 - (IBAction)stopAction:(id)sender
 {
-    
+    if (self.fillKey.text) {
     self.showLabel.hidden = YES;
     self.prograssView.hidden = YES;
     self.isStop = YES;
-    
+    }else
+    {
+        [SVProgressHUD showAlterMessage:@"请输入key"];
+    }
 }
 
 /**

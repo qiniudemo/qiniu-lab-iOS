@@ -7,11 +7,13 @@
 //
 
 #import "uploadAlassetImage.h"
+#import <Photos/Photos.h>
 
 @interface uploadAlassetImage ()
 
 @property (nonatomic, strong) ALAsset * asset;
 @property (nonatomic, strong) ALAssetsLibrary * assetslibrary;
+
 
 @end
 
