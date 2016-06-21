@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55843633DFF6241081E63EE3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8CCA39C69FF4108BAAE81A /* libPods.a */; };
 		93259CAB1BCF723700811967 /* QuickVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93259CA91BCF723700811967 /* QuickVideoVC.m */; };
 		93259CAC1BCF723700811967 /* QuickVideoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93259CAA1BCF723700811967 /* QuickVideoVC.xib */; };
 		932B073D1BD26A6F002F576E /* QN_UploadFileWithoutKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B073B1BD26A6F002F576E /* QN_UploadFileWithoutKey.m */; };
@@ -67,6 +66,7 @@
 		93D2AD281BD3AA8D00955EE5 /* QN_uploadFileWithParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D2AD261BD3AA8D00955EE5 /* QN_uploadFileWithParams.m */; };
 		93D2AD291BD3AA8D00955EE5 /* QN_uploadFileWithParams.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D2AD271BD3AA8D00955EE5 /* QN_uploadFileWithParams.xib */; };
 		93D4BE9D1C15870300ABDD42 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D4BE9C1C15870300ABDD42 /* icon@2x.png */; };
+		C849F1FA5D8DEA5DC06E6E39 /* libPods-QNAaronTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0887F25049BA20B2794FBB19 /* libPods-QNAaronTest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,8 +87,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2F6902BD0013A8B63FB3C38A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		73057EB9B6F23AAA7786D354 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		045EBDE4D9AEEBD51172C344 /* Pods-QNAaronTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QNAaronTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QNAaronTest/Pods-QNAaronTest.debug.xcconfig"; sourceTree = "<group>"; };
+		0887F25049BA20B2794FBB19 /* libPods-QNAaronTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QNAaronTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2936C2EE6CAE774C2AD0FFB5 /* Pods-QNAaronTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QNAaronTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-QNAaronTest/Pods-QNAaronTest.release.xcconfig"; sourceTree = "<group>"; };
 		93259CA81BCF723700811967 /* QuickVideoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickVideoVC.h; path = QNAaronTest/SecondVC/QuickVideoVC.h; sourceTree = SOURCE_ROOT; };
 		93259CA91BCF723700811967 /* QuickVideoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickVideoVC.m; path = QNAaronTest/SecondVC/QuickVideoVC.m; sourceTree = SOURCE_ROOT; };
 		93259CAA1BCF723700811967 /* QuickVideoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuickVideoVC.xib; path = QNAaronTest/SecondVC/QuickVideoVC.xib; sourceTree = SOURCE_ROOT; };
@@ -183,7 +184,6 @@
 		93D2AD261BD3AA8D00955EE5 /* QN_uploadFileWithParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QN_uploadFileWithParams.m; path = QNAaronTest/SecondVC/QN_uploadFileWithParams.m; sourceTree = SOURCE_ROOT; };
 		93D2AD271BD3AA8D00955EE5 /* QN_uploadFileWithParams.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QN_uploadFileWithParams.xib; path = QNAaronTest/SecondVC/QN_uploadFileWithParams.xib; sourceTree = SOURCE_ROOT; };
 		93D4BE9C1C15870300ABDD42 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		CB8CCA39C69FF4108BAAE81A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +193,7 @@
 			files = (
 				93CE80FF1BD4E1BF008AB56F /* AVFoundation.framework in Frameworks */,
 				93CE80FD1BD4E18F008AB56F /* CoreMedia.framework in Frameworks */,
-				55843633DFF6241081E63EE3 /* libPods.a in Frameworks */,
+				C849F1FA5D8DEA5DC06E6E39 /* libPods-QNAaronTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,24 +214,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15F9F148F630ACAA6420AD5D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				045EBDE4D9AEEBD51172C344 /* Pods-QNAaronTest.debug.xcconfig */,
+				2936C2EE6CAE774C2AD0FFB5 /* Pods-QNAaronTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2E8503FDEEA68C422759FF9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				93CE80FE1BD4E1BF008AB56F /* AVFoundation.framework */,
 				93CE80FC1BD4E18F008AB56F /* CoreMedia.framework */,
 				9372E4481BCE3DB4008FF500 /* AssetsLibrary.framework */,
-				CB8CCA39C69FF4108BAAE81A /* libPods.a */,
+				0887F25049BA20B2794FBB19 /* libPods-QNAaronTest.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5C41D8DFFAD9A9E4FD520E51 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				73057EB9B6F23AAA7786D354 /* Pods.debug.xcconfig */,
-				2F6902BD0013A8B63FB3C38A /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		932C51281BC7AD2C00E097C5 /* 网络(Network) */ = {
@@ -287,8 +287,8 @@
 				937E26131BC673170028858C /* QNAaronTestTests */,
 				937E261E1BC673170028858C /* QNAaronTestUITests */,
 				937E25F81BC673170028858C /* Products */,
-				5C41D8DFFAD9A9E4FD520E51 /* Pods */,
 				2E8503FDEEA68C422759FF9C /* Frameworks */,
+				15F9F148F630ACAA6420AD5D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -447,12 +447,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 937E26241BC673170028858C /* Build configuration list for PBXNativeTarget "QNAaronTest" */;
 			buildPhases = (
-				E397404E20D2DDAAD8499AC3 /* Check Pods Manifest.lock */,
+				C7EAC9E40F831D66F629A435 /* [CP] Check Pods Manifest.lock */,
 				937E25F31BC673170028858C /* Sources */,
 				937E25F41BC673170028858C /* Frameworks */,
 				937E25F51BC673170028858C /* Resources */,
-				CCC08327DB0FD830DB12D802 /* Copy Pods Resources */,
-				C219FE8F5D566645AAAA2F38 /* Embed Pods Frameworks */,
+				55889CACBBD4600AF9DC39F2 /* [CP] Embed Pods Frameworks */,
+				E10C7E85524600A8B6DF2F60 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -595,49 +595,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C219FE8F5D566645AAAA2F38 /* Embed Pods Frameworks */ = {
+		55889CACBBD4600AF9DC39F2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QNAaronTest/Pods-QNAaronTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CCC08327DB0FD830DB12D802 /* Copy Pods Resources */ = {
+		C7EAC9E40F831D66F629A435 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E397404E20D2DDAAD8499AC3 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E10C7E85524600A8B6DF2F60 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QNAaronTest/Pods-QNAaronTest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -812,7 +812,7 @@
 		};
 		937E26251BC673170028858C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73057EB9B6F23AAA7786D354 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 045EBDE4D9AEEBD51172C344 /* Pods-QNAaronTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -847,7 +847,7 @@
 		};
 		937E26261BC673170028858C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F6902BD0013A8B63FB3C38A /* Pods.release.xcconfig */;
+			baseConfigurationReference = 2936C2EE6CAE774C2AD0FFB5 /* Pods-QNAaronTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
