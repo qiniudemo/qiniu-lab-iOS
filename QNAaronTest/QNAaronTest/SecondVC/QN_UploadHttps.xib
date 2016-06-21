@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QN_UploadHttps">
+            <connections>
+                <outlet property="choseBtn" destination="FUy-7C-6n6" id="VgL-5l-ugH"/>
+                <outlet property="prograssView" destination="nBD-ml-siv" id="zWa-Cj-ZSM"/>
+                <outlet property="showLabel" destination="wa0-y9-7ql" id="6IM-Bh-Buq"/>
+                <outlet property="uploadBtn" destination="oAw-Cq-vSR" id="QIk-lf-XLj"/>
+                <outlet property="uploadImage" destination="CyD-sb-iKX" id="uy4-VX-gA7"/>
+                <outlet property="view" destination="p5O-l3-ZwZ" id="GgJ-Wr-ZgR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="p5O-l3-ZwZ">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUy-7C-6n6">
+                    <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="9tl-Cn-TG6"/>
+                    </constraints>
+                    <state key="normal" title="选择">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="choseAction:" destination="-1" eventType="touchUpInside" id="GoE-wL-EF1"/>
+                    </connections>
+                </button>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nBD-ml-siv">
+                    <rect key="frame" x="0.0" y="144" width="540" height="2"/>
+                </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wa0-y9-7ql">
+                    <rect key="frame" x="550" y="135" width="50" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Dq6-1j-ajS"/>
+                        <constraint firstAttribute="height" constant="21" id="wRm-di-ulx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAw-Cq-vSR">
+                    <rect key="frame" x="0.0" y="104" width="600" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Pg9-yK-omt"/>
+                    </constraints>
+                    <state key="normal" title="上传">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="uploadAction:" destination="-1" eventType="touchUpInside" id="1Xa-zb-RQN"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CyD-sb-iKX">
+                    <rect key="frame" x="0.0" y="166" width="600" height="434"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="oAw-Cq-vSR" firstAttribute="top" secondItem="FUy-7C-6n6" secondAttribute="bottom" constant="10" id="4he-Sg-aac"/>
+                <constraint firstAttribute="trailing" secondItem="oAw-Cq-vSR" secondAttribute="trailing" id="52c-xv-3j7"/>
+                <constraint firstItem="FUy-7C-6n6" firstAttribute="leading" secondItem="p5O-l3-ZwZ" secondAttribute="leading" id="EDr-5T-Vbx"/>
+                <constraint firstItem="nBD-ml-siv" firstAttribute="top" secondItem="oAw-Cq-vSR" secondAttribute="bottom" constant="10" id="HC7-OB-gbW"/>
+                <constraint firstAttribute="trailing" secondItem="FUy-7C-6n6" secondAttribute="trailing" id="J7C-1y-1cz"/>
+                <constraint firstItem="nBD-ml-siv" firstAttribute="leading" secondItem="p5O-l3-ZwZ" secondAttribute="leading" id="KIT-Ox-lxy"/>
+                <constraint firstAttribute="trailing" secondItem="CyD-sb-iKX" secondAttribute="trailing" id="Ld3-ny-9yL"/>
+                <constraint firstItem="wa0-y9-7ql" firstAttribute="centerY" secondItem="nBD-ml-siv" secondAttribute="centerY" id="OTT-nn-QU3"/>
+                <constraint firstAttribute="trailing" secondItem="wa0-y9-7ql" secondAttribute="trailing" id="Opo-ln-y8e"/>
+                <constraint firstAttribute="bottom" secondItem="CyD-sb-iKX" secondAttribute="bottom" id="PLc-qr-mbU"/>
+                <constraint firstItem="oAw-Cq-vSR" firstAttribute="leading" secondItem="p5O-l3-ZwZ" secondAttribute="leading" id="V0J-IB-ra0"/>
+                <constraint firstItem="CyD-sb-iKX" firstAttribute="leading" secondItem="p5O-l3-ZwZ" secondAttribute="leading" id="XNL-QU-eKI"/>
+                <constraint firstItem="wa0-y9-7ql" firstAttribute="leading" secondItem="nBD-ml-siv" secondAttribute="trailing" constant="10" id="afw-HB-EyF"/>
+                <constraint firstItem="FUy-7C-6n6" firstAttribute="top" secondItem="p5O-l3-ZwZ" secondAttribute="top" constant="64" id="gyQ-Dh-umY"/>
+                <constraint firstItem="CyD-sb-iKX" firstAttribute="top" secondItem="nBD-ml-siv" secondAttribute="bottom" constant="20" id="zKr-LU-Mff"/>
+            </constraints>
+            <point key="canvasLocation" x="423" y="234"/>
+        </view>
+    </objects>
+</document>

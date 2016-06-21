@@ -11,7 +11,7 @@
 				<key>functionName</key>
 				<string>文件上传</string>
 				<key>functionVCName</key>
-				<string>QuickVideoVC</string>
+				<string>QN_UploadFileWithoutKey</string>
 			</dict>
 			<dict>
 				<key>functionName</key>
@@ -73,6 +73,12 @@
 				<string>启用上传文件的CRC32内容校验</string>
 				<key>functionVCName</key>
 				<string>QN_UploadFileWithCRC32</string>
+			</dict>
+			<dict>
+				<key>functionName</key>
+				<string>https文件上传</string>
+				<key>functionVCName</key>
+				<string>QN_UploadHttps</string>
 			</dict>
 		</array>
 	</dict>

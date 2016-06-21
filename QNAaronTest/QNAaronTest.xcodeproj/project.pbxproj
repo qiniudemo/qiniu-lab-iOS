@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93031E501D1932B40071A390 /* QN_UploadHttps.m in Sources */ = {isa = PBXBuildFile; fileRef = 93031E4E1D1932B40071A390 /* QN_UploadHttps.m */; };
+		93031E511D1932B40071A390 /* QN_UploadHttps.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93031E4F1D1932B40071A390 /* QN_UploadHttps.xib */; };
 		93259CAB1BCF723700811967 /* QuickVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93259CA91BCF723700811967 /* QuickVideoVC.m */; };
 		93259CAC1BCF723700811967 /* QuickVideoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93259CAA1BCF723700811967 /* QuickVideoVC.xib */; };
 		932B073D1BD26A6F002F576E /* QN_UploadFileWithoutKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 932B073B1BD26A6F002F576E /* QN_UploadFileWithoutKey.m */; };
@@ -90,6 +92,9 @@
 		045EBDE4D9AEEBD51172C344 /* Pods-QNAaronTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QNAaronTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QNAaronTest/Pods-QNAaronTest.debug.xcconfig"; sourceTree = "<group>"; };
 		0887F25049BA20B2794FBB19 /* libPods-QNAaronTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QNAaronTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2936C2EE6CAE774C2AD0FFB5 /* Pods-QNAaronTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QNAaronTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-QNAaronTest/Pods-QNAaronTest.release.xcconfig"; sourceTree = "<group>"; };
+		93031E4D1D1932B40071A390 /* QN_UploadHttps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QN_UploadHttps.h; path = QNAaronTest/SecondVC/QN_UploadHttps.h; sourceTree = SOURCE_ROOT; };
+		93031E4E1D1932B40071A390 /* QN_UploadHttps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QN_UploadHttps.m; path = QNAaronTest/SecondVC/QN_UploadHttps.m; sourceTree = SOURCE_ROOT; };
+		93031E4F1D1932B40071A390 /* QN_UploadHttps.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QN_UploadHttps.xib; path = QNAaronTest/SecondVC/QN_UploadHttps.xib; sourceTree = SOURCE_ROOT; };
 		93259CA81BCF723700811967 /* QuickVideoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickVideoVC.h; path = QNAaronTest/SecondVC/QuickVideoVC.h; sourceTree = SOURCE_ROOT; };
 		93259CA91BCF723700811967 /* QuickVideoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickVideoVC.m; path = QNAaronTest/SecondVC/QuickVideoVC.m; sourceTree = SOURCE_ROOT; };
 		93259CAA1BCF723700811967 /* QuickVideoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuickVideoVC.xib; path = QNAaronTest/SecondVC/QuickVideoVC.xib; sourceTree = SOURCE_ROOT; };
@@ -422,6 +427,9 @@
 				93CED2CB1C7EAAC400839427 /* QN_LivePhotoVC.h */,
 				93CED2CC1C7EAAC400839427 /* QN_LivePhotoVC.m */,
 				93CED2CD1C7EAAC400839427 /* QN_LivePhotoVC.xib */,
+				93031E4D1D1932B40071A390 /* QN_UploadHttps.h */,
+				93031E4E1D1932B40071A390 /* QN_UploadHttps.m */,
+				93031E4F1D1932B40071A390 /* QN_UploadHttps.xib */,
 			);
 			name = SecondVC;
 			path = BaseVC/SecondVC;
@@ -562,6 +570,7 @@
 				9372E4421BCE04C0008FF500 /* placeholder.jpg in Resources */,
 				93742FF01BD3C96900F3DA5F /* QN_uploadTakePhoto.xib in Resources */,
 				93D0FC6F1BCDEC34001BE041 /* Catalog List.plist in Resources */,
+				93031E511D1932B40071A390 /* QN_UploadHttps.xib in Resources */,
 				93CED2CF1C7EAAC400839427 /* QN_LivePhotoVC.xib in Resources */,
 				93CE80FB1BD4E124008AB56F /* QN_PlayVideoVC.xib in Resources */,
 				932B07431BD27B77002F576E /* QN_UploadFileWithKey.xib in Resources */,
@@ -668,6 +677,7 @@
 				93CE80FA1BD4E124008AB56F /* QN_PlayVideoVC.m in Sources */,
 				93259CAB1BCF723700811967 /* QuickVideoVC.m in Sources */,
 				93742FEF1BD3C96900F3DA5F /* QN_uploadTakePhoto.m in Sources */,
+				93031E501D1932B40071A390 /* QN_UploadHttps.m in Sources */,
 				932C51311BC7AD2C00E097C5 /* AFAppDotNetAPIClient.m in Sources */,
 				9372E4461BCE2624008FF500 /* uploadAlassetImage.m in Sources */,
 				932C51491BC7AE1900E097C5 /* SVProgressHUD.m in Sources */,

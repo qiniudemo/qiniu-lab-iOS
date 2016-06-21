@@ -1,44 +1,38 @@
 //
-//  QuickVideoVC.m
+//  QN_UploadHttps.m
 //  QNAaronTest
 //
-//  Created by   何舒 on 15/10/15.
-//  Copyright © 2015年   何舒. All rights reserved.
+//  Created by 何昊宇 on 16/6/21.
+//  Copyright © 2016年   何舒. All rights reserved.
 //
 
-#import "QuickVideoVC.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import "QN_UploadHttps.h"
 
-@interface QuickVideoVC ()
+@interface QN_UploadHttps ()
 
 @property (nonatomic, strong) UIImage * pickImage;
-@property (nonatomic, strong) ALAsset * asset;
-@property (nonatomic, strong) ALAssetsLibrary * assetslibrary;
-@property (nonatomic, strong) NSData * imageData;
 
 @end
 
-@implementation QuickVideoVC
+@implementation QN_UploadHttps
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.uploadVideoImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.uploadImage.contentMode = UIViewContentModeScaleAspectFit;
     self.showLabel.hidden = YES;
     
     self.prograssView.hidden = YES;
     self.prograssView.progress = 0.0f;
-    
-    self.assetslibrary = [[ALAssetsLibrary alloc] init];
     
 }
 
 -(void)getTokenFromQN
 {
     [HTTPRequestPost hTTPRequest_GetpostBody:nil andUrl:@"api/quick_start/simple_image_example_token.php" andSucceed:^(NSURLSessionDataTask *task, id responseObject) {
+        self.domain = responseObject[@"domain"];
         self.token = responseObject[@"uptoken"];
-        self.domain = responseObject [@"domain"];
-        [self uploadImageToQNFilePath:nil];
+        [self uploadImageToQNFilePath:[self getImagePath:self.pickImage]];
     } andFailure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"error ======  %@", error);
     } andISstatus:nil];
@@ -66,7 +60,6 @@
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
         [self presentViewController:picker animated:YES completion:nil];
     }else {
         UIAlertView *alert = [[UIAlertView alloc]
@@ -84,15 +77,10 @@
 - (void)imagePickerController:(UIImagePickerController *)picker
         didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
-    if (UIImagePNGRepresentation(image) == nil)
-    {
-        self.imageData = UIImageJPEGRepresentation(image, 1.0);
-    }
-    else
-    {
-        self.imageData = UIImagePNGRepresentation(image);
-    }
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    self.pickImage = image; //imageView为自己定义的UIImageView
+    [picker dismissModalViewControllerAnimated:YES];
+    
+    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
@@ -100,6 +88,36 @@
     
 }
 
+//照片获取本地路径转换
+-(NSString *)getImagePath:(UIImage *)Image
+{
+    NSString * filePath = nil;
+    NSData * data = nil;
+    if (UIImagePNGRepresentation(Image) == nil)
+    {
+        data = UIImageJPEGRepresentation(Image, 1.0);
+    }
+    else
+    {
+        data = UIImagePNGRepresentation(Image);
+    }
+    
+    //图片保存的路径
+    //这里将图片放在沙盒的documents文件夹中
+    NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    //文件管理器
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //把刚刚图片转换的data对象拷贝至沙盒中
+    [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
+    NSString * ImagePath = [[NSString alloc]initWithFormat:@"/theFirstImage.png"];
+    [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:ImagePath] contents:data attributes:nil];
+    
+    //得到选择后沙盒中图片的完整路径
+    filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,ImagePath];
+    return filePath;
+}
 
 -(void)uploadImageToQNFilePath:(NSString *)filePath
 {
@@ -107,15 +125,19 @@
     if (!isStringEmpty(self.token)) {
         token = self.token;
     }
-    //fileName为key,当上传的文件名字一样时，默认为上传失败
-    QNUploadManager *upManager = [[QNUploadManager alloc] init];
+    QNConfiguration * config = [QNConfiguration build:^(QNConfigurationBuilder *builder) {
+        QNServiceAddress *s1 = [[QNServiceAddress alloc] init:@"https://up.qbox.me" ips:nil];
+        builder.zone = [[QNZone alloc] initWithUp:s1 upBackup:nil];
+    }];
+    QNUploadManager *upManager = [[QNUploadManager alloc] initWithConfiguration:config];
     QNUploadOption * uploadOption = [[QNUploadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
         self.percentFloat = percent;
     } params:nil checkCrc:NO cancellationSignal:nil];
-    [upManager putData:self.imageData key:nil token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        NSLog(@"info ==== %@",info);
-        NSLog(@"resp ==== %@",resp);
-        NSLog(@"%@/%@",self.domain,key);
+    [upManager putFile:filePath key: nil token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        NSLog(@"info ===== %@", info);
+        NSLog(@"resp ===== %@", resp);
+        NSLog(@"%@/%@",self.domain,resp[@"key"]);
+        [self.uploadImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",self.domain,resp[@"key"]]] placeholderImage:[UIImage imageNamed:@"placeholder.jpg"]];
     } option:uploadOption];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(getPercent) userInfo:nil repeats:YES];
     
@@ -130,21 +152,22 @@
     self.showLabel.text = [NSString stringWithFormat:@"%.0f%%",self.percentFloat*100];
     self.prograssView.progress = self.percentFloat;
     [self.showLabel setNeedsLayout];
-    
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
