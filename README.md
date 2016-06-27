@@ -1,5 +1,11 @@
 #简介
 
+app下载[下载](https://dn-devtools.qbox.me/QNUploadDemo-v1.0.3.html)
+iOS点击下载之后，还无法直接运行，需要信任我们299账户的企业证书方可使用
+操作如下：
+点击设置—>通用—>设备管理
+进入设备管理，显示Shanghai Qiniu Information Technologies Co.Ltd 的企业级应用证书，点击信任，即可使用下载app
+
 该项目是七牛iOS SDK的使用方法演示项目，使用xcode6 开发，可以下载到本地，直接导入作为参考。
 
 该项目对应的服务端在[https://github.com/qiniudemo/qiniu-api-server](https://github.com/qiniudemo/qiniu-api-server/tree/master/php-v6)，可以搭建一个简单的PHP环境即可使用。
